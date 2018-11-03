@@ -101,6 +101,7 @@
 	<body>
 		<script src="js/build/three.js"></script>
 		<script src="js/libs/tween.min.js"></script>
+		<script src="js/libs/stats.min.js"></script>
 		<script src="js/controls/OrbitControls.js"></script>
 		<script src="js/renderers/CSS3DRenderer.js"></script>
 
@@ -237,6 +238,7 @@
 
 			var camera, scene, renderer;
 			var controls;
+			var stats;
 
 			var objects = [];
 			var targets = { table: [], sphere: [], helix: [], grid: [] };
@@ -398,7 +400,9 @@
 
 				window.addEventListener( 'resize', onWindowResize, false );
 
-			}
+                stats = new Stats();
+                document.getElementById("container").appendChild( stats.dom );
+            }
 
 			function transform( targets, duration ) {
 
@@ -446,6 +450,8 @@
 				TWEEN.update();
 
 				controls.update();
+
+                stats.update();
 
 			}
 
